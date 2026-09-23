@@ -1,0 +1,18 @@
+# ─── Core ─────────────────────────────────────────────────
+Django>=4.2,<5.0
+djangorestframework>=3.14
+django-cors-headers>=4.3
+django-filter>=23.5
+
+# ─── Database ─────────────────────────────────────────────
+psycopg[binary]>=3.1
+
+# ─── Config & Env ─────────────────────────────────────────
+python-decouple>=3.8
+dj-database-url>=2.1
+
+# ─── Templates & Import ───────────────────────────────────
+PyYAML>=6.0
+
+# ─── Search ───────────────────────────────────────────────
+# PostgreSQL full-text search (built-in)
