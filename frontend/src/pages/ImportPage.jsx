@@ -69,7 +69,10 @@ export default function ImportPage() {
             { template: text },
             {
                 onSuccess: (created) => navigate(`/issues/${created.id}`),
-                onError: (err) => setErrors([err.message]),
+                onError: (err) => {
+                    setErrors([err.message])
+                    console.log(err)
+                },
             }
         );
     };
@@ -255,8 +258,8 @@ function PreviewCard({ issue }) {
                         <dl className="grid grid-cols-[max-content_1fr] gap-x-3 gap-y-1 text-xs">
                             {Object.entries(issue.environment).map(([k, v]) => (
                                 <div key={k} className="contents">
-                                    <dt className="font-mono text-fg-muted">{k}</dt>
-                                    <dd className="font-mono">{v}</dd>
+                                    <dt className="text-start font-mono text-fg-muted">{k}</dt>
+                                    <dd className="text-start font-mono">{v}</dd>
                                 </div>
                             ))}
                         </dl>

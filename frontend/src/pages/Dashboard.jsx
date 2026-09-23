@@ -134,7 +134,7 @@ export default function Dashboard() {
                                                 {issue.knowledge_priority}
                                             </span>
                                         </div>
-                                        <div className="text-sm font-medium mb-2 line-clamp-1">
+                                        <div className="text-start text-sm font-medium mb-2 line-clamp-1">
                                             {issue.title}
                                         </div>
                                         <div className="flex flex-wrap gap-1.5">

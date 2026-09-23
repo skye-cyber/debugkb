@@ -87,9 +87,5 @@ sources:
     url: https://stackoverflow.com/q/example
     notes: ""
 
-related_issues:
-  - ISSUE-2025-014
-  - ISSUE-2025-032
-
 reusability_score: 8
 learning_value_score: 7
