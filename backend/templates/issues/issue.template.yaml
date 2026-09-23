@@ -1,0 +1,102 @@
+# ─────────────────────────────────────────────────────────────
+# DebugKB Issue Template — YAML
+# ─────────────────────────────────────────────────────────────
+# Paste this file (or its contents) into the Import page, or run:
+#   python manage.py issue import path/to/file.yaml
+#
+# Only `title` is strictly required. Everything else is optional
+# and receives sensible defaults if omitted.
+# ─────────────────────────────────────────────────────────────
+
+
+# ─── Required ────────────────────────────────────────────────
+title: ""                          # Short, searchable summary (< 120 chars)
+
+# ─── Recommended ─────────────────────────────────────────────
+description: ""                    # 1–3 paragraphs. What was happening?
+
+status: unresolved                 # unresolved | investigating |
+                                   # partially_resolved | workaround | resolved
+
+severity: medium                   # critical | high | medium | low
+
+resolution_confidence: null        # confirmed | likely | probable | uncertain
+                                   # Required only when status is resolved
+
+tags: []                           # List of lowercase strings, no '#'
+                                   # e.g. [django, auth, permissions]
+
+category: ""                       # Free-form, e.g. "Django", "DevOps"
+
+# ─── Environment ─────────────────────────────────────────────
+environment: {}                    # Free-form key/value map
+                                   # os, python, django, node, browser, etc.
+
+# ─── Dates ───────────────────────────────────────────────────
+# ISO 8601. Omit and the backend will default encountered_at to now,
+# and resolved_at to now if the status is resolved.
+encountered_at: null
+resolved_at: null
+
+# ─── Investigation ───────────────────────────────────────────
+# Chronological list of what you tried. Order is preserved.
+investigation_steps: []
+# Example:
+#   - hypothesis: CSRF issue
+#     attempt: Checked CSRF cookies and middleware
+#     result: CSRF settings were correct
+#     is_successful: false
+#
+#   - hypothesis: User permissions
+#     attempt: Inspected is_staff and is_superuser
+#     result: is_staff=True, is_superuser=False
+#     is_successful: true
+
+# ─── Resolution (only if status is resolved or partially_resolved) ───
+resolution: null
+# Example:
+#   root_cause: Admin views require superuser or specific permissions.
+#   fix: Set is_superuser=True for the staff user.
+#   verification: Logged in and confirmed the admin loads.
+#   code_changes: |
+#     from django.contrib.auth import get_user_model
+#     User = get_user_model()
+#     u = User.objects.get(username='staffuser')
+#     u.is_superuser = True
+#     u.save()
+#   confirmed_at: 2026-08-10T16:45:00Z
+
+# ─── Lessons Learned ─────────────────────────────────────────
+lessons: []
+# Example:
+#   - title: Django admin staff vs superuser
+#     description: is_staff grants admin index access, but many views
+#       require is_superuser or explicit permissions. Check both.
+#     category: django
+#     tags: [permissions, admin]
+
+# ─── Skills Gained ───────────────────────────────────────────
+skills: []
+# Example:
+#   - name: Django Authentication & Permissions
+#     category: Django
+#     proficiency: 7
+
+# ─── Sources ─────────────────────────────────────────────────
+sources: []
+# Example:
+#   - title: Django admin documentation
+#     source_type: documentation      # documentation | stackoverflow |
+#                                     # github_issue | blog | other
+#     url: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/
+#     notes: Clarified staff vs superuser distinction.
+
+# ─── Related Issues ──────────────────────────────────────────
+related_issues: []                 # List of issue IDs
+                                   # e.g. [ISSUE-2025-014, ISSUE-2025-031]
+
+# ─── Scoring (optional overrides) ────────────────────────────
+# If omitted, the backend calculates knowledge_priority automatically
+# using severity, resolution_confidence, reusability, and learning value.
+reusability_score: 5               # 1–10
+learning_value_score: 5            # 1–10
