@@ -1,0 +1,9 @@
+-r base.txt
+
+# ─── Dev Tools ────────────────────────────────────────────
+django-extensions>=3.2
+django-debug-toolbar>=4.2
+ruff>=0.1
+pytest>=7.4
+pytest-django>=4.7
+factory-boy>=3.3
