@@ -1,0 +1,95 @@
+title: Django admin 403 after login for staff user
+
+description: |
+  After deploying the app, staff users could authenticate
+  successfully but received 403 Forbidden on every admin URL.
+  Other authenticated views worked fine, which suggested the
+  issue was authorization, not authentication.
+
+status: resolved
+severity: high
+resolution_confidence: confirmed
+category: Django
+tags: [django, auth, permissions, admin]
+
+environment:
+  os: Ubuntu 22.04
+  python: "3.11"
+  django: "4.2"
+  database: PostgreSQL 15
+
+encountered_at: 2026-08-10T14:30:00Z
+resolved_at: 2026-08-10T16:45:00Z
+
+investigation_steps:
+  - hypothesis: CSRF token issue
+    attempt: Checked CSRF cookies and middleware settings
+    result: CSRF settings were correct — not the cause
+    is_successful: false
+
+  - hypothesis: Session authentication failing
+    attempt: Tested with a simple login-required view
+    result: Session auth worked, so issue was admin-specific
+    is_successful: false
+
+  - hypothesis: Admin permission check misconfigured
+    attempt: Inspected is_staff and is_superuser flags
+    result: is_staff=True but is_superuser=False
+    is_successful: true
+
+resolution:
+  root_cause: |
+    The staff user lacked is_superuser, which the admin panel
+    requires for full access. Some admin views require superuser
+    status even for staff users, causing the 403.
+  fix: |
+    Set is_superuser=True for the user, or grant the necessary
+    permissions via a group.
+  verification: |
+    Logged in as the user and confirmed the admin panel loads.
+  code_changes: |
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    u = User.objects.get(username='staffuser')
+    u.is_superuser = True
+    u.save()
+  confirmed_at: 2026-08-10T16:45:00Z
+
+lessons:
+  - title: Django admin staff vs superuser
+    description: |
+      is_staff grants access to the admin index, but many admin
+      views require is_superuser or specific permissions.
+      Always check both flags.
+    category: django
+    tags: [permissions, admin]
+
+  - title: Separate authentication from authorization
+    description: |
+      A 403 on an authenticated user means authorization, not
+      authentication. Narrowing the failure domain early saves time.
+    category: debugging
+    tags: [auth]
+
+skills:
+  - name: Django Authentication & Permissions
+    category: Django
+    proficiency: 7
+
+sources:
+  - title: Django admin site documentation
+    source_type: documentation
+    url: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/
+    notes: Clarified the difference between staff and superuser.
+
+  - title: Stack Overflow — 403 admin after login
+    source_type: stackoverflow
+    url: https://stackoverflow.com/q/example
+    notes: ""
+
+related_issues:
+  - ISSUE-2025-014
+  - ISSUE-2025-032
+
+reusability_score: 8
+learning_value_score: 7
