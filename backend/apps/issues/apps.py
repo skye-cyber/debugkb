@@ -2,4 +2,8 @@ from django.apps import AppConfig
 
 
 class IssuesConfig(AppConfig):
-    name = "issues"
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.issues"
+
+    def ready(self):
+        from . import signals  # noqa
