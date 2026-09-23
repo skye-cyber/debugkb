@@ -10,6 +10,7 @@ import RelatedIssuesList from "../components/issues/RelatedIssuesList";
 import IssueDetailSkeleton from "../components/issues/IssueDetailSkeleton";
 import EmptyState from "../components/ui/EmptyState";
 import Button from "../components/ui/Button";
+import { useDeleteIssue } from "../hooks/useIssueMutations";
 import { AlertCircle } from "lucide-react";
 
 export default function IssueDetailPage() {
@@ -34,10 +35,14 @@ export default function IssueDetailPage() {
     );
   }
 
+  const deleteMutation = useDeleteIssue();
+
   const handleDelete = () => {
     if (confirm("Delete this issue? This cannot be undone.")) {
-      // api.delete(`/issues/${id}`)
-      navigate("/issues");
+      deleteMutation.mutate(issue.id, {
+        onSuccess: () => navigate("/issues"),
+                            onError: (err) => alert(err.message),
+      });
     }
   };
 
