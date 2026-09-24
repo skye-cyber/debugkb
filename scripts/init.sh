@@ -33,14 +33,14 @@ DOCS_DIR="$PROJECT_DIR/docs"
 SYSTEMD_DIR="$PROJECT_DIR/systemd"
 DOCKER_DIR="$PROJECT_DIR/docker"
 
-PYTHON_VERSION="3.11"
+PYTHON_VERSION="3.14"
 NODE_VERSION="20"
 DB_NAME="debugkb"
 DB_USER="debugkb"
 DB_PASSWORD="debugkb_dev_password"
 DB_HOST="localhost"
 DB_PORT="5432"
-BACKEND_PORT="8000"
+BACKEND_PORT="8001"
 FRONTEND_PORT="5173"
 
 # ─────────────────────────────────────────────────────────────
@@ -362,7 +362,7 @@ SECRET_KEY=change-me
 ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=postgres://user:password@localhost:5432/debugkb
 CORS_ALLOWED_ORIGINS=http://localhost:5173
-BACKEND_PORT=8000
+BACKEND_PORT=8001
 EOF
 
 # Frontend .env
