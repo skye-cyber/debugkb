@@ -51,7 +51,7 @@ function Section({ icon: Icon, label, value }) {
         <Icon className="h-3.5 w-3.5 text-fg-muted" />
         {label}
       </div>
-      <p className="text-sm text-fg-muted whitespace-pre-line leading-relaxed">
+      <p className="text-start text-sm text-fg-muted whitespace-pre-line leading-relaxed">
         {value}
       </p>
     </div>

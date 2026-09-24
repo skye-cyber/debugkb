@@ -43,7 +43,7 @@ export default function IssueConstellation({ issues = [] }) {
         const r = baseR + jitter + (i % 5) * 6;
 
         const a = (i / issues.length) * Math.PI * 2 + Math.random() * 0.4;
-        const speed = 0.0004 + (10 - priority) * 0.00005;
+        const speed = 0.001 + (10 - priority) * 0.00005;
 
         const [r_, g_, b_] =
           SEVERITY_COLOR[it.severity] ?? SEVERITY_COLOR.medium;
@@ -128,7 +128,7 @@ export default function IssueConstellation({ issues = [] }) {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="absolute inset-0 -z-0 h-full w-full pointer-events-none"
+      className="absolute inset-0 h-full w-full pointer-events-none"
       style={{ opacity: 0.9 }}
     />
   );

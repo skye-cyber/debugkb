@@ -37,12 +37,12 @@ export default function ReactiveTitle({ children, className = "" }) {
     }, []);
 
     return (
-        <h1
+        <div
             ref={ref}
             className={`text-xl font-semibold tracking-tight ${className}`}
             style={{ fontVariationSettings: '"wght" 500' }}
         >
             {children}
-        </h1>
+        </div>
     );
 }

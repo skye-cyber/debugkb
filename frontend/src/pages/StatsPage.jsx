@@ -6,6 +6,18 @@ import PageHeader from "../components/ui/PageHeader";
 import { Card, CardBody, CardHeader, CardTitle } from "../components/ui/Card";
 import { useStats } from "../hooks/useStats";
 
+// Ambient layers (reused from Dashboard)
+import FlowFieldBackground from "../components/dashboard/FlowFieldBackground";
+import ReactiveTitle from "../components/dashboard/ReactiveTitle";
+import SpringCard from "../components/dashboard/SpringCard";
+import TickingNumber from "../components/stats/TickingNumber";
+// Data visualizations
+import SeverityArcMeter from "../components/stats/SeverityArcMeter";
+// (Steps 3–5 to be imported in a later pass)
+// import StatusLiquidFill from "../components/stats/StatusLiquidFill";
+// import MonthlyWaveform from "../components/stats/MonthlyWaveform";
+// import TagRings from "../components/stats/TagRings";
+
 const TONE_MAP = {
     Critical: "bg-sev-critical",
     High: "bg-sev-high",
@@ -41,100 +53,103 @@ export default function StatsPage() {
     })) ?? [];
 
     const monthly = stats?.monthly ?? [];
-
+    const topTags = stats?.top_tags ?? [];
     // (keep TOP_TAGS hard-coded for now — backend will provide it later)
 
     return (
-        <>
-            <PageHeader
-                title="Stats"
-                description="Trends, distribution, and growth across your knowledge base."
-            />
+        <div className="relative">
+            <FlowFieldBackground />
 
-            {/* Summary tiles */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                {summary.map(({ label, value, icon: Icon, tone }) => (
-                    <Card key={label}>
-                        <CardBody className="flex items-center gap-4">
-                            <div className="grid h-10 w-10 place-items-center rounded-lg bg-muted">
-                                <Icon className={`h-5 w-5 ${tone}`} />
-                            </div>
-                            <div>
-                                <div className="text-2xl font-semibold tracking-tight">
-                                    {isLoading ? "—" : value}
+            <div className="relative z-10">
+                <PageHeader
+                    title={<ReactiveTitle>Stats</ReactiveTitle>}
+                    description="Trends, distribution, and growth across your knowledge base."
+                />
+
+                {/* Summary tiles */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    {summary.map(({ label, value, icon: Icon, tone }) => (
+                        <SpringCard key={label}>
+                            <CardBody className="flex items-center gap-4">
+                                <div className="grid h-10 w-10 place-items-center rounded-lg bg-muted">
+                                    <Icon className={`h-5 w-5 ${tone}`} />
                                 </div>
-                                <div className="text-xs text-fg-muted">{label}</div>
-                            </div>
+                                <div>
+                                    <div className="text-2xl font-semibold tracking-tight tabular-nums">
+                                        <TickingNumber value={value} />
+                                    </div>
+                                    <div className="text-xs text-fg-muted">{label}</div>
+                                </div>
+                            </CardBody>
+                        </SpringCard>
+                    ))}
+                </div>
+
+                <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                    <Card>
+                        <CardHeader className="flex items-center gap-2">
+                            <Flame className="h-4 w-4 text-fg-muted" />
+                            <CardTitle><ReactiveTitle>Severity Distribution</ReactiveTitle></CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <SeverityArcMeter data={severityDist} />
                         </CardBody>
                     </Card>
-                ))}
-            </div>
 
-            <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                <Card>
-                    <CardHeader className="flex items-center gap-2">
-                        <Flame className="h-4 w-4 text-fg-muted" />
-                        <CardTitle>Severity Distribution</CardTitle>
-                    </CardHeader>
-                    <CardBody className="space-y-3">
-                        <StackedBar data={severityDist} />
-                        <LegendList data={severityDist} />
-                    </CardBody>
-                </Card>
+                    <Card>
+                        <CardHeader className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 text-fg-muted" />
+                            <CardTitle><ReactiveTitle>Status Distribution</ReactiveTitle></CardTitle>
+                        </CardHeader>
+                        <CardBody className="space-y-3">
+                            <StackedBar data={statusDist} />
+                            <LegendList data={statusDist} />
+                        </CardBody>
+                    </Card>
+                </div>
 
-                <Card>
-                    <CardHeader className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-fg-muted" />
-                        <CardTitle>Status Distribution</CardTitle>
-                    </CardHeader>
-                    <CardBody className="space-y-3">
-                        <StackedBar data={statusDist} />
-                        <LegendList data={statusDist} />
-                    </CardBody>
-                </Card>
-            </div>
+                <div className="grid lg:grid-cols-2 gap-6">
+                    <Card>
+                        <CardHeader className="flex items-center gap-2">
+                            <TrendingUp className="h-4 w-4 text-fg-muted" />
+                            <CardTitle>Issues Resolved (Last 8 Months)</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <BarChart data={monthly} />
+                        </CardBody>
+                    </Card>
 
-            <div className="grid lg:grid-cols-2 gap-6">
-                <Card>
-                    <CardHeader className="flex items-center gap-2">
-                        <TrendingUp className="h-4 w-4 text-fg-muted" />
-                        <CardTitle>Issues Resolved (Last 8 Months)</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                        <BarChart data={monthly} />
-                    </CardBody>
-                </Card>
-
-                <Card>
-                    <CardHeader className="flex items-center gap-2">
-                        <Hash className="h-4 w-4 text-fg-muted" />
-                        <CardTitle>Top Tags</CardTitle>
-                    </CardHeader>
-                    <CardBody className="space-y-3">
-                        {[
-                            { name: "django", count: 14 },
-                            { name: "python", count: 11 },
-                            { name: "auth", count: 9 },
-                            { name: "postgres", count: 8 },
-                            { name: "permissions", count: 7 },
-                        ].map((t) => (
-                            <div key={t.name}>
-                                <div className="flex items-center justify-between text-xs mb-1">
-                                    <span className="font-mono text-fg-muted">#{t.name}</span>
-                                    <span className="text-fg-muted">{t.count}</span>
+                    <Card>
+                        <CardHeader className="flex items-center gap-2">
+                            <Hash className="h-4 w-4 text-fg-muted" />
+                            <CardTitle>Top Tags</CardTitle>
+                        </CardHeader>
+                        <CardBody className="space-y-3">
+                            {[
+                                { name: "django", count: 14 },
+                                { name: "python", count: 11 },
+                                { name: "auth", count: 9 },
+                                { name: "postgres", count: 8 },
+                                { name: "permissions", count: 7 },
+                            ].map((t) => (
+                                <div key={t.name}>
+                                    <div className="flex items-center justify-between text-xs mb-1">
+                                        <span className="font-mono text-fg-muted">#{t.name}</span>
+                                        <span className="text-fg-muted">{t.count}</span>
+                                    </div>
+                                    <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+                                        <div
+                                            className="h-full bg-primary rounded-full"
+                                            style={{ width: `${(t.count / 14) * 100}%` }}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-                                    <div
-                                        className="h-full bg-primary rounded-full"
-                                        style={{ width: `${(t.count / 14) * 100}%` }}
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </CardBody>
-                </Card>
+                            ))}
+                        </CardBody>
+                    </Card>
+                </div>
             </div>
-        </>
+        </div>
     );
 }
 

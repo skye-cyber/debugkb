@@ -11,11 +11,11 @@ export default function EnvironmentTable({ environment }) {
         <CardTitle>Environment</CardTitle>
       </CardHeader>
       <CardBody>
-        <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2 text-xs">
+        <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-xs">
           {Object.entries(environment).map(([k, v]) => (
             <div key={k} className="contents">
-              <dt className="font-mono text-fg-muted">{k}</dt>
-              <dd className="font-mono text-fg break-all">{v}</dd>
+            <dt className="text-start font-mono text-fg-muted">{k[0].toUpperCase() + k.slice(1)}</dt>
+              <dd className="text-start font-mono text-fg break-all">{v}</dd>
             </div>
           ))}
         </dl>

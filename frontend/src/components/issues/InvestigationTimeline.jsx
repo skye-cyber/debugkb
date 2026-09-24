@@ -85,7 +85,7 @@ function Row({ icon: Icon, label, value, muted }) {
           muted ? "text-fg-muted/60" : "text-fg-muted"
         )}
       />
-      <div className="min-w-0 text-xs">
+      <div className="text-start min-w-0 text-xs">
         <span className="font-semibold text-fg">{label}: </span>
         <span className={muted ? "text-fg-muted" : "text-fg"}>{value}</span>
       </div>

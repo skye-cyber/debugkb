@@ -17,8 +17,6 @@ export default function IssueDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { issue, isLoading, error } = useIssue(id);
-
-
     const deleteMutation = useDeleteIssue();
 
     const handleDelete = () => {

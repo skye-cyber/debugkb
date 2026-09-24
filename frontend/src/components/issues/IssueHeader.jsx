@@ -7,6 +7,7 @@ import SeverityBadge from "../ui/SeverityBadge";
 import StatusBadge from "../ui/StatusBadge";
 import TagChip from "../ui/TagChip";
 import { formatDate, formatRelative, daysBetween } from "../../utils/format";
+import { Card } from "../ui/Card";
 
 export default function IssueHeader({ issue, onDelete }) {
   const duration = daysBetween(issue.encountered_at, issue.resolved_at);
@@ -42,13 +43,13 @@ export default function IssueHeader({ issue, onDelete }) {
       </div>
 
       {/* Title + actions */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight leading-tight">
+      <Card className="flex items-start justify-between gap-1">
+        <div className="ml-4 min-w-0">
+          <h1 className="text-start text-gray-800 text-md sm:text-lg font-semibold tracking-tight leading-tight">
             {issue.title}
           </h1>
           {issue.description && (
-            <p className="mt-2 text-sm text-fg-muted max-w-3xl">
+            <p className="ml-2 p-2 text-start -mt-5 text-[14px] text-fg-muted max-w-3xl">
               {issue.description}
             </p>
           )}
@@ -73,7 +74,7 @@ export default function IssueHeader({ issue, onDelete }) {
             <Trash2 className="h-4 w-4" />
           </Button>
         </div>
-      </div>
+      </Card>
 
       {/* Tags */}
       {issue.tags?.length > 0 && (

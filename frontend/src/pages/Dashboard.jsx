@@ -41,7 +41,7 @@ export default function Dashboard() {
 
             <div className="relative z-10">
                 <PageHeader
-                    title={<ReactiveTitle>Dashboard</ReactiveTitle>}
+                    title={<ReactiveTitle className="text-gray-700">Dashboard</ReactiveTitle>}
                     description="Your debugging knowledge base at a glance."
                     actions={
                         <>
@@ -78,12 +78,6 @@ export default function Dashboard() {
                         <CardHeader className="flex items-center justify-between relative z-10">
                             <CardTitle>Recent Issues</CardTitle>
                             <Link
-                                onMouseEnter={() => window.dispatchEvent(
-                                    new CustomEvent("issue-hover", { detail: { id: issue.id } })
-                                )}
-                                onMouseLeave={() => window.dispatchEvent(
-                                    new CustomEvent("issue-hover", { detail: { id: null } })
-                                )}
                                 to="/issues"
                                 className="text-xs font-medium text-primary hover:underline inline-flex items-center gap-1"
                             >

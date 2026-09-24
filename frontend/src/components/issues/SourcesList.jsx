@@ -32,8 +32,8 @@ export default function SourcesList({ sources }) {
                 >
                   <Icon className="h-4 w-4 mt-0.5 shrink-0 text-fg-muted" />
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-sm font-medium text-fg group-hover:text-primary transition-colors truncate">
+                    <div className="flex items-center gap-1">
+                      <span className="text-start text-sm font-medium text-fg group-hover:text-primary transition-colors truncate">
                         {s.title}
                       </span>
                       <ExternalLink className="h-3 w-3 shrink-0 text-fg-muted opacity-0 group-hover:opacity-100" />
