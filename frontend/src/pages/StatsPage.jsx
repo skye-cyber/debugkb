@@ -93,6 +93,8 @@ export default function StatsPage() {
                         </CardHeader>
                         <CardBody>
                             <SeverityArcMeter data={severityDist} />
+                            <StackedBar data={severityDist} />
+                            <LegendList data={severityDist} />
                         </CardBody>
                     </Card>
 

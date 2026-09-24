@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { cn } from "../../utils/cn";
 
 const SEVERITY_VAR = {
@@ -10,7 +10,7 @@ const SEVERITY_VAR = {
 
 const R = 80;
 const CIRC = 2 * Math.PI * R;
-const GAP = 6;
+const GAP = 0;
 
 function readColor(varName) {
     const raw = getComputedStyle(document.documentElement)
@@ -87,7 +87,7 @@ export default function SeverityArcMeter({ data = [] }) {
     const centerLabel = hovered ? hovered.label : "Total";
 
     return (
-        <div className="grid sm:grid-cols-[200px_1fr] gap-6 items-center">
+        <div className="grid sm:grid-cols-[200px_1fr] gap-0.5 items-center">
             {/* Ring */}
             <div className="relative w-[200px] h-[200px] mx-auto">
                 <svg viewBox="0 0 200 200" className="w-full h-full -rotate-90">
@@ -113,7 +113,7 @@ export default function SeverityArcMeter({ data = [] }) {
                                 r={R}
                                 fill="none"
                                 stroke={color}
-                                strokeWidth={isHovered ? 22 : 18}
+                                strokeWidth={isHovered ? 12 : 14}
                                 strokeDasharray={
                                     drawn
                                         ? `${Math.max(0, s.len - GAP)} ${CIRC}`
@@ -148,7 +148,7 @@ export default function SeverityArcMeter({ data = [] }) {
             </div>
 
             {/* Legend */}
-            <ul className="space-y-2">
+            <ul className="hidden flex flex-col items-start space-y-0.5">
                 {data.map((d) => {
                     const color = colors[d.label] ?? "rgb(128,128,128)";
                     const pct = total > 0 ? Math.round((d.value / total) * 100) : 0;
