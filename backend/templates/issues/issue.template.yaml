@@ -12,6 +12,9 @@
 # ─── Required ────────────────────────────────────────────────
 title: ""                          # Short, searchable summary (< 120 chars)
 
+# record_type: issue
+# issue | concept | command | procedure | gotcha | comparison | reference
+
 # ─── Recommended ─────────────────────────────────────────────
 description: ""                    # 1–3 paragraphs. What was happening?
 
@@ -31,6 +34,14 @@ category: ""                       # Free-form, e.g. "Django", "DevOps"
 # ─── Environment ─────────────────────────────────────────────
 environment: {}                    # Free-form key/value map
                                    # os, python, django, node, browser, etc.
+
+content:
+  commands: []
+  examples: []
+  steps: []
+  differences: []
+  rules: []
+  warnings: []
 
 # ─── Dates ───────────────────────────────────────────────────
 # ISO 8601. Omit and the backend will default encountered_at to now,

@@ -61,6 +61,9 @@ export default {
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+        helvetica: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        caecilia: ['Caecilia_light', "sans-serif"],
+        helvetica_neue: ['Helvetica_neue']
       },
       borderRadius: {
         DEFAULT: "0.5rem",

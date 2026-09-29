@@ -140,7 +140,7 @@ export default function ImportPage() {
                             onChange={(e) => setText(e.target.value)}
                             placeholder="Paste your YAML or JSON here…"
                             spellCheck={false}
-                            className="w-full h-96 lg:h-full min-h-[400px] resize-none bg-transparent font-mono text-xs text-fg placeholder:text-fg-muted p-4 focus:outline-none"
+                            className="w-full h-96 lg:h-full min-h-[400px] resize-none bg-transparent font-mono text-xs text-fg placeholder:text-fg-muted p-0.5 focus:outline-none"
                         />
                     </CardBody>
 
@@ -221,7 +221,7 @@ export default function ImportPage() {
 
 function PreviewCard({ issue }) {
     return (
-        <div className="space-y-4">
+        <div className="text-start space-y-4">
             <div>
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     <span className="font-mono text-[11px] text-fg-muted">

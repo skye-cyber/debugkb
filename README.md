@@ -40,3 +40,16 @@ See [`docs/system-concept.md`](docs/system-concept.md) for the full architecture
 | `systemd/`   | Service definitions              |
 | `docs/`      | Design documentation             |
 | `templates/` | Source files copied by `init.sh` |
+
+## Docker
+```sh
+sudo docker compose -f docker/docker-compose.yml up --build
+```
+Or
+```sh
+sudo docker compose up -d --build
+```
+### Recreate
+```sh
+sudo docker compose up -d --force-recreate backend
+``

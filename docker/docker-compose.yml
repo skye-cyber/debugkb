@@ -4,8 +4,8 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_DB: debugkb
-      POSTGRES_USER: debugkb
-      POSTGRES_PASSWORD: debugkb_dev_password
+      POSTGRES_USER: debugkb_user
+      POSTGRES_PASSWORD: debugkb_db_pass_con
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -15,6 +15,8 @@ services:
       retries: 10
 
   backend:
+    env_file:
+        - .env.docker          # relative to the compose file
     build:
       context: ..
       dockerfile: docker/Dockerfile.backend
@@ -23,14 +25,19 @@ services:
       db:
         condition: service_healthy
     environment:
-      DEBUG: "False"
-      SECRET_KEY: "change-me-in-production"
-      ALLOWED_HOSTS: "backend,localhost,127.0.0.1"
-      DATABASE_URL: "postgres://debugkb_user:debugkb_db_con_pass@db:5432/debugkb_db"
-      CORS_ALLOWED_ORIGINS: "http://localhost,http://localhost:8080"
+        DEBUG: "False"
+        SECRET_KEY: "80a199c42a93a0a6264561a2ce0936985ecf706273cb85effb6eef640cfab843"
+        ALLOWED_HOSTS: "backend,localhost,127.0.0.1"
+        # POSTGRES_DB: debugkb_db
+        # POSTGRES_USER: debugkb_user
+        # POSTGRES_PASSWORD: debugkb_db_pass_con
+        # POSTGRES_HOST: db
+        # POSTGRES_PORT: "5432"
+        # DATABASE_URL: "postgres://debugkb_user:debugkb_db_pass_con@localhost:5432/debugkb"
+        CORS_ALLOWED_ORIGINS: "http://localhost,http://localhost:8080"
     command: >
       sh -c "python manage.py migrate --noinput &&
-             gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+             gunicorn debugkb.wsgi:application --bind 0.0.0.0:8000 --workers 3"
     ports:
       - "8000:8000"
 

@@ -72,7 +72,7 @@ function CodeBlock({ code }) {
     <div className="relative group">
       <pre
         className={cn(
-          "overflow-x-auto rounded-lg border border-border bg-muted/40",
+          "text-start overflow-x-auto rounded-lg border border-border bg-muted/40",
           "p-3 text-[11.5px] font-mono text-fg leading-relaxed"
         )}
       >

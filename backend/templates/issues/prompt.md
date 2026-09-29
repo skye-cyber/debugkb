@@ -11,6 +11,7 @@ or saved as a `.yaml` file and imported via:
 ```
 python manage.py issue import path/to/file.yaml
 ```
+Wrap the yaml content in code block fencing just as you do when writing code
 
 ## Output format rules
 
@@ -188,4 +189,4 @@ reusability_score: 8
 learning_value_score: 7
 ```
 
-Emit the YAML for the issue you were asked to produce. Nothing else.
+Emit the codeblock fenced YAML for the issue you were asked to produce. Nothing else.

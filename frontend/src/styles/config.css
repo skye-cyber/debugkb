@@ -5,6 +5,76 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Bold-Oblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-compressed-5871d14b6903a.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Oblique.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-rounded-bold-5871d05ead8de.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-light-587ebe5a59211.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica_neue';
+  src: url('../../public/fonts/helvetica-neue-55-cufonfonts/helvetica-46-light-italic-587ebdb0ea724.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica_neue';
+  src: url('../../public/fonts/helvetica-neue-55-cufonfonts/helvetica-47-light-condensed-587ebd7b5a6f6.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica_neue';
+  src: url('../../public/fonts/helvetica-neue-55-cufonfonts/HelveticaNeue-BlackCond.otf') format('opentype'),
+  src('../../public/fonts/helvetica-neue-55-cufonfonts/HelveticaNeue-BlackCond.otf') format('');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Caecilia_light';
+  src: url('../../public/fonts/pmn-caecilia-lt-76-bold-italic-5876cdfa9266f.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* ─── Light Theme ─────────────────────────────────────── */
 :root {
   --color-bg: 250 250 252; /* near-white */

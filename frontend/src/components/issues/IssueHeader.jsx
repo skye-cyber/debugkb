@@ -45,7 +45,7 @@ export default function IssueHeader({ issue, onDelete }) {
       {/* Title + actions */}
       <Card className="flex items-start justify-between gap-1">
         <div className="ml-4 min-w-0">
-          <h1 className="text-start text-gray-800 text-md sm:text-lg font-semibold tracking-tight leading-tight">
+          <h1 className="text-start text-gray-800 dark:text-gray-100 text-md sm:text-lg font-semibold tracking-tight leading-tight">
             {issue.title}
           </h1>
           {issue.description && (

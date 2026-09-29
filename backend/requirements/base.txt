@@ -3,7 +3,8 @@ Django>=4.2,<5.0
 djangorestframework>=3.14
 django-cors-headers>=4.3
 django-filter>=23.5
-
+python-dotenv
+dj-database-url==2.1.0
 # ─── Database ─────────────────────────────────────────────
 psycopg[binary]>=3.1
 
