@@ -50,7 +50,7 @@ export default function IssueDetailPage() {
         <>
             <IssueHeader issue={issue} onDelete={handleDelete} />
 
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid lg:grid-cols-3 gap-6 font-sans">
                 {/* Main column */}
                 <div className="lg:col-span-2 space-y-6">
                     <InvestigationTimeline steps={issue.investigation_steps} />

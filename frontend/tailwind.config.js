@@ -61,9 +61,17 @@ export default {
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
-        helvetica: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        helvetica: ['Helvetica'],
         caecilia: ['Caecilia_light', "sans-serif"],
-        helvetica_neue: ['Helvetica_neue']
+        helvetica_neue: ['Helvetica_neue'],
+        // helvetica_neue_l: ['Helvetica_neue_light'],
+        // helvetica_neue_bl: ['Helvetica_neue_black'],
+        // helvetica_bold: ['Helvetica_bold'],
+        // helvetica_oblique: ['Helvetica_oblique'],
+        // helvetica_compressed: ['Helvetica_compressed'],
+        // helvetica_cu_oblique: ['Helvetica_cu_oblique'],
+        // helvetica_cu_bold: ['Helvetica_cu_bold'],
+        // helvetica_cu_light: ['Helvetica_cu_light'],
       },
       borderRadius: {
         DEFAULT: "0.5rem",

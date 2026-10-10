@@ -13,38 +13,38 @@
 }
 
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_bold';
   src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_oblique';
   src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Bold-Oblique.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_compressed';
   src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-compressed-5871d14b6903a.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_cu_oblique';
   src: url('../../public/fonts/helvetica-255-cufonfonts/Helvetica-Oblique.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_cu_bold';
   src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-rounded-bold-5871d05ead8de.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica';
+  font-family: 'Helvetica_cu_light';
   src: url('../../public/fonts/helvetica-255-cufonfonts/helvetica-light-587ebe5a59211.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
@@ -56,13 +56,13 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica_neue';
+  font-family: 'Helvetica_neue_light';
   src: url('../../public/fonts/helvetica-neue-55-cufonfonts/helvetica-47-light-condensed-587ebd7b5a6f6.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica_neue';
+  font-family: 'Helvetica_neue_black';
   src: url('../../public/fonts/helvetica-neue-55-cufonfonts/HelveticaNeue-BlackCond.otf') format('opentype'),
   src('../../public/fonts/helvetica-neue-55-cufonfonts/HelveticaNeue-BlackCond.otf') format('');
   font-weight: 700;
@@ -457,4 +457,25 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+
+.liquid-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,rgba(255, 255, 255, 0.18) 0%,rgba(255, 255, 255, 0) 35%,rgba(255, 255, 255, 0.18) 60%,rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 220% 100%;
+  animation: liquid-shimmer 4.2s linear infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes liquid-shimmer {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 220% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-shimmer { animation: none; }
 }

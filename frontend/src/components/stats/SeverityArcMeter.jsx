@@ -87,7 +87,7 @@ export default function SeverityArcMeter({ data = [] }) {
     const centerLabel = hovered ? hovered.label : "Total";
 
     return (
-        <div className="grid sm:grid-cols-[200px_1fr] gap-0.5 items-center">
+        <div className="flex items-center w-full gap-0.5 ">
             {/* Ring */}
             <div className="relative w-[200px] h-[200px] mx-auto">
                 <svg viewBox="0 0 200 200" className="w-full h-full -rotate-90">

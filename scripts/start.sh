@@ -18,17 +18,17 @@ trap cleanup SIGINT SIGTERM
 
 echo "Starting backend..."
 cd "$BACKEND_DIR"
-source .venv/bin/activate
-python manage.py runserver "0.0.0.0:${BACKEND_PORT:-8000}" &
+source ~/pyenv/bin/activate
+python manage.py runserver "0.0.0.0:${BACKEND_PORT:-8001}" &
 BACKEND_PID=$!
 
 echo "Starting frontend..."
 cd "$FRONTEND_DIR"
-npm run dev -- --host &
+npm run dev:react -- --host &
 FRONTEND_PID=$!
 
 echo ""
-echo "  Backend:  http://localhost:${BACKEND_PORT:-8000}"
+echo "  Backend:  http://localhost:${BACKEND_PORT:-8001}"
 echo "  Frontend: http://localhost:5173"
 echo ""
 echo "Press Ctrl+C to stop both."

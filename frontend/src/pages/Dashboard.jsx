@@ -41,7 +41,7 @@ export default function Dashboard() {
 
             <div className="relative z-10">
                 <PageHeader
-                    title={<ReactiveTitle className="text-gray-700">Dashboard</ReactiveTitle>}
+                    title={<ReactiveTitle className="text-gray-700 dark:text-white">Dashboard</ReactiveTitle>}
                     description="Your debugging knowledge base at a glance."
                     actions={
                         <>

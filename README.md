@@ -12,6 +12,7 @@ Personal Debugging Knowledge Base — capture, search, and learn from every solv
 ./scripts/start.sh
 ```
 
+
 Then open <http://localhost:5173>
 
 ## CLI

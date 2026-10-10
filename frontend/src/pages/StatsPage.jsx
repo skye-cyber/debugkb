@@ -13,10 +13,9 @@ import SpringCard from "../components/dashboard/SpringCard";
 import TickingNumber from "../components/stats/TickingNumber";
 // Data visualizations
 import SeverityArcMeter from "../components/stats/SeverityArcMeter";
-// (Steps 3–5 to be imported in a later pass)
-// import StatusLiquidFill from "../components/stats/StatusLiquidFill";
-// import MonthlyWaveform from "../components/stats/MonthlyWaveform";
-// import TagRings from "../components/stats/TagRings";
+import StatusLiquidFill from "../components/stats/StatusLiquidFill";
+import MonthlyWaveform from "../components/stats/MonthlyWaveform";
+import TagRings from "../components/stats/TagRings";
 
 const TONE_MAP = {
     Critical: "bg-sev-critical",
@@ -53,8 +52,13 @@ export default function StatsPage() {
     })) ?? [];
 
     const monthly = stats?.monthly ?? [];
-    const topTags = stats?.top_tags ?? [];
-    // (keep TOP_TAGS hard-coded for now — backend will provide it later)
+    const topTags = stats?.top_tags ?? [
+        { name: "django", count: 14 },
+        { name: "python", count: 11 },
+        { name: "auth", count: 9 },
+        { name: "postgres", count: 8 },
+        { name: "permissions", count: 7 },
+    ];
 
     return (
         <div className="relative">
@@ -91,10 +95,10 @@ export default function StatsPage() {
                             <Flame className="h-4 w-4 text-fg-muted" />
                             <CardTitle><ReactiveTitle>Severity Distribution</ReactiveTitle></CardTitle>
                         </CardHeader>
-                        <CardBody>
+                        <CardBody className={'flex items-center'}>
                             <SeverityArcMeter data={severityDist} />
-                            <StackedBar data={severityDist} />
-                            <LegendList data={severityDist} />
+                            {/*<StackedBar data={severityDist} />
+                            <LegendList data={severityDist} />*/}
                         </CardBody>
                     </Card>
 
@@ -104,8 +108,9 @@ export default function StatsPage() {
                             <CardTitle><ReactiveTitle>Status Distribution</ReactiveTitle></CardTitle>
                         </CardHeader>
                         <CardBody className="space-y-3">
-                            <StackedBar data={statusDist} />
-                            <LegendList data={statusDist} />
+                            <StatusLiquidFill data={statusDist} />
+                            {/*<StackedBar data={statusDist} />
+                            <LegendList data={statusDist} />*/}
                         </CardBody>
                     </Card>
                 </div>
@@ -117,7 +122,8 @@ export default function StatsPage() {
                             <CardTitle>Issues Resolved (Last 8 Months)</CardTitle>
                         </CardHeader>
                         <CardBody>
-                            <BarChart data={monthly} />
+                            {/*<BarChart data={monthly} />*/}
+                            <MonthlyWaveform data={monthly} />
                         </CardBody>
                     </Card>
 
@@ -127,7 +133,7 @@ export default function StatsPage() {
                             <CardTitle>Top Tags</CardTitle>
                         </CardHeader>
                         <CardBody className="space-y-3">
-                            {[
+                        {/*{[
                                 { name: "django", count: 14 },
                                 { name: "python", count: 11 },
                                 { name: "auth", count: 9 },
@@ -146,7 +152,8 @@ export default function StatsPage() {
                                         />
                                     </div>
                                 </div>
-                            ))}
+                            ))}*/}
+                            <TagRings data={topTags} />
                         </CardBody>
                     </Card>
                 </div>
